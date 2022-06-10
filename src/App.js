@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Sidebar from "./components/Sidebar";
+import { Dashboard } from "./components/Dashboard";
+import { DrawerSelectList } from "./components/DrawerSelectList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ListProducts } from "./components/ListProducts";
+import { AddProduct } from "./components/AddProduct";
+import { UpdateProduct } from "./components/UpdateProduct";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+      {/* #FIXME: Add Sidebar  */}
+      {/* <Sidebar /> */}
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/list-products" element={<ListProducts />} />
+          <Route path="/add-product" element={<AddProduct/>} />
+          <Route path="/update" element={<UpdateProduct />} />
+        </Routes>
+      </BrowserRouter>
+      <div className="d-flex">
+        {/* </div> */}
+        <div style={{ width: "100%" }}></div>
+      </div>
+    </>
   );
 }
 
