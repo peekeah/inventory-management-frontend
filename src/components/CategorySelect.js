@@ -12,13 +12,11 @@ export const CategorySelect = ({
 
   return (
     <>
-      <div className="d-flex gap-3 justify-content-center m-2">
-        <label className=" d-flex align-items-center">
-          <span>Category</span>
-        </label>
+      <div className="d-flex gap-3 justify-content-center align-items-center m-2">
+        <label>Category</label>
         <div>
           <select
-            className="form-select form-select-lg"
+            className="form-select form-select-md"
             aria-label=".form-select-lg example"
             value={selectedCategory}
             onChange={handleChange}

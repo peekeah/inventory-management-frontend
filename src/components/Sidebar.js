@@ -1,54 +1,72 @@
-import { Drawer, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import React from 'react'
-import { DrawerSelectList } from './DrawerSelectList';
+import React, { useState } from "react";
+import { Drawer } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
+//CSS for Components
 const useStyles = makeStyles({
-  page: {
-    background: '#f9f9f9',
-    width: '100%'
-  },
-  drawer: {
-    width: drawerWidth
-  },
   drawerPaper: {
-    width: drawerWidth
-  },
-  root: {
-    display: 'flex'
+    width: drawerWidth,
   },
   list: {
-    listStyleType: 'none'
-  }
-
-})
+    listStyleType: "none",
+  },
+});
 
 const Sidebar = () => {
-
   const classes = useStyles();
+  let navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
     <>
-    <Drawer
-      className={classes.drawer}
-      variant="permanent"
-      anchor="left"
-      classes={{paper: classes.drawerPaper}}
-      >
-      <div className='d-flex'>
-        {/* <ul className={classes.list}>
-          <Typography variant='h5' component='li'>Dashboard</Typography>
-          <Typography variant='h5' component='li'>Items</Typography>
-          <Typography variant='h5' component='li'>Sidebar</Typography>
-        </ul> */}
+      <div className="position-absolute" style={{ top: 8, left: 8 }}>
+        <MenuIcon fontSize="large" onClick={() => setIsDrawerOpen(true)} />
       </div>
-        <DrawerSelectList />
-    </Drawer>
-
+      <Drawer
+        anchor="left"
+        open={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        classes={{ paper: classes.drawerPaper }}
+      >
+        <div className="">
+          <div className="list-group" onClick={() => setIsDrawerOpen(false)}>
+            <div className="my-3 mx-3 align-self-end">
+              <CloseIcon
+                fontSize="large"
+                onClick={() => setIsDrawerOpen(false)}
+              />
+            </div>
+            <button
+              type="button"
+              className="list-group-item list-group-item-action"
+              onClick={() => navigate("/")}
+            >
+              Dashboard
+            </button>
+            <button
+              type="button"
+              className="list-group-item list-group-item-action"
+              onClick={() => navigate("/add-product")}
+            >
+              Add Product
+            </button>
+            <button
+              type="button"
+              className="list-group-item list-group-item-action"
+              onClick={() => navigate("/list-products")}
+            >
+              List Product
+            </button>
+          </div>
+        </div>
+      </Drawer>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

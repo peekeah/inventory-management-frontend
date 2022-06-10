@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
+//Validation Schema
 const AddProductSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Minimum 3 Charcters Required")
@@ -22,20 +23,24 @@ const AddProductSchema = Yup.object().shape({
 export const AddProduct = () => {
   let URL = "https://inventory-management-tool-01.herokuapp.com";
 
+  //Error CSS
   const validationError = {
     color: "Red",
     position: "absolute",
   };
 
+  //Initial Values of Formik
   const initialValues = {
     name: "",
     category: "",
     quantity: "",
   };
 
+  //Add Product 'POST' http request API call
   const handleSubmit = async (values, { resetForm }) => {
     try {
       let res = await axios.post(`${URL}/add-item`, values);
+      alert('Successfully Added');
       resetForm();
       console.log(res);
     } catch (err) {
