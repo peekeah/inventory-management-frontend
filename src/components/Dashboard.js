@@ -73,7 +73,7 @@ export function Dashboard() {
   return (
     <>
       <div
-        class="d-flex justify-content-around bg-info"
+        className="d-flex justify-content-around bg-info"
         style={{ height: "60px" }}
       >
         <CategorySelect

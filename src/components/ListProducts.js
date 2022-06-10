@@ -54,7 +54,7 @@ export const ListProducts = () => {
       alert("err", err);
     }
   };
-  
+
   const handleEdit = async (item) => {
     setSelectedItem(item);
     handleOpen();
@@ -120,6 +120,7 @@ export const ListProducts = () => {
       <Modal
         open={open}
         onClose={handleClose}
+        animation={false}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
