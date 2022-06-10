@@ -5,6 +5,7 @@ import { Dashboard } from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ListProducts } from "./components/ListProducts";
 import { AddProduct } from "./components/AddProduct";
+import React from "react";
 
 function App() {
   return (
