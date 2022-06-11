@@ -24,7 +24,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="position-absolute" style={{ top: 8, left: 8 }}>
+      <div className="position-absolute" style={{ top: 12, left: 15 }}>
         <MenuIcon fontSize="large" onClick={() => setIsDrawerOpen(true)} />
       </div>
       <Drawer
