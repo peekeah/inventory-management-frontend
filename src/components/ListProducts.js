@@ -22,7 +22,7 @@ const style = {
 
 export const ListProducts = () => {
   let URL = "https://inventory-management-tool-01.herokuapp.com";
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState("");
   const [counter, setCounter] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = useState({});
@@ -63,62 +63,6 @@ export const ListProducts = () => {
 
   return (
     <>
-      {/* {products ? (
-        <>
-          <h2 className="text-center my-5">Product List</h2>
-          <div className="container my-3">
-            <table className="table table-info">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Quantity</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((item, id) => (
-                  <tr key={id}>
-                    <th>{id + 1}</th>
-                    <td>{item.name}</td>
-                    <td>{item.category}</td>
-                    <td>{item.quantity}</td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-warning"
-                        onClick={() => handleEdit(item)}
-                      >
-                        <EditIcon />
-                      </button>{" "}
-                      &nbsp;
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={() => handleDelete(item._id)}
-                      >
-                        <DeleteIcon />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      ) : (
-        <>
-          <Backdrop
-            sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={true}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
-        </>
-      )}
-      */}
-
       <Modal
         open={open}
         onClose={handleClose}
@@ -141,35 +85,46 @@ export const ListProducts = () => {
       </Modal>
 
       <h1 className="text-center my-5 mx-0">Products</h1>
-      <div className="container">
-        <div className="d-flex row mx-0 justify-content-center">
-          {products.map((item, id) => (
-            <div className="wrapper col-10 col-sm-6 col-lg-4 my-3 mx-0">
-              <div className="card bg-light">
-                <div className="card-body text-center">
-                  <h2>{item.name}</h2>
-                  <h5>{item.category}</h5>
-                  <h2>{item.quantity}</h2>
-                  <div className="d-flex gap-3 justify-content-center">
-                    <button
-                      className="btn btn-outline-dark"
-                      onClick={() => handleEdit(item)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-outline-dark"
-                      onClick={() => handleDelete(item._id)}
-                    >
-                      Delete
-                    </button>
+      {products ? (
+        <>
+          <div className="container">
+            <div className="d-flex row mx-0 justify-content-center">
+              {products.map((item, id) => (
+                <div className="wrapper col-10 col-sm-6 col-lg-4 my-3 mx-0">
+                  <div className="card bg-light">
+                    <div className="card-body text-center">
+                      <h2>{item.name}</h2>
+                      <h5>{item.category}</h5>
+                      <h2>{item.quantity}</h2>
+                      <div className="d-flex gap-3 justify-content-center">
+                        <button
+                          className="btn btn-outline-dark"
+                          onClick={() => handleEdit(item)}
+                        >
+                          <EditIcon />
+                        </button>
+                        <button
+                          className="btn btn-outline-dark"
+                          onClick={() => handleDelete(item._id)}
+                        >
+                          <DeleteIcon />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      ) : (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={true}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
     </>
   );
 };
