@@ -8,13 +8,12 @@ export const CategorySelect = ({
 }) => {
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
-    console.log(e.target.value);
   };
 
   return (
     <>
       <div className="d-flex gap-3 justify-content-center align-items-center m-2">
-        {isScreenLessThanMd ? null : <label>Category</label>}
+        {isScreenLessThanMd ? null : <label className="text-light">Category</label>}
         <div>
           <select
             className="form-select form-select-md"

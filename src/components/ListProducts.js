@@ -26,14 +26,14 @@ export const ListProducts = () => {
   const [counter, setCounter] = useState(0);
   const [open, setOpen] = React.useState(false);
   const [selectedItem, setSelectedItem] = useState({});
-  
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
   useEffect(() => {
     setCounter(counter + 1);
   }, []);
-  
+
   //Fetching Data
   useEffect(() => {
     let getData = async () => {
@@ -63,7 +63,7 @@ export const ListProducts = () => {
 
   return (
     <>
-      {products ? (
+      {/* {products ? (
         <>
           <h2 className="text-center my-5">Product List</h2>
           <div className="container my-3">
@@ -117,12 +117,18 @@ export const ListProducts = () => {
           </Backdrop>
         </>
       )}
+      */}
+
       <Modal
         open={open}
         onClose={handleClose}
-        animation={false}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{
+          disableTransition: {
+            transition: "none",
+          },
+        }}
       >
         <Box sx={style}>
           <UpdateProduct
@@ -133,6 +139,37 @@ export const ListProducts = () => {
           />
         </Box>
       </Modal>
+
+      <h1 className="text-center my-5">Products</h1>
+      <div className="container mt-5">
+        <div className="d-flex row">
+          {products.map((item, id) => (
+            <div className="wrapper col-4 my-3">
+              <div className="card bg-light">
+                <div className="card-body text-center">
+                  <h2>{item.name}</h2>
+                  <h5>{item.category}</h5>
+                  <h2>{item.quantity}</h2>
+                  <div className="d-flex gap-3 justify-content-center">
+                    <button
+                      className="btn btn-outline-dark"
+                      onClick={() => handleEdit(item)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-outline-dark"
+                      onClick={() => handleDelete(item._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

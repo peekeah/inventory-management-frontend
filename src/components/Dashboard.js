@@ -91,7 +91,7 @@ export function Dashboard() {
 
   return (
     <>
-      <div className="bg-info">
+      <div className="bg-success">
         <div
           className="d-flex offset-2 offset-md-0 gap-3 justify-content-around"
           style={{ height: "60px" }}
@@ -109,7 +109,8 @@ export function Dashboard() {
           >
             <div>
               <input
-                className="form-check-input my-0"
+                className="form-check-input my-0 bg-warning border-warning"
+                data-onstyle="primary"
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"
@@ -117,7 +118,7 @@ export function Dashboard() {
               />
             </div>
             <div>
-              <label className="form-check-label">
+              <label className="form-check-label text-light">
                 {isScreenLessThanMd ? null : "Switch to "}
                 {isChecked ? "Bar" : "Pie"}
                 {isScreenLessThanMd ? null : " Chart"}
@@ -126,7 +127,7 @@ export function Dashboard() {
           </div>
         </div>
         <div
-          className="d-flex align-items-center justify-content-center bg-dark"
+          className="d-flex align-items-center justify-content-center bg-light"
           style={{ height: "calc(100vh - 60px)" }}
         >
           <div className="col-10 col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto justify-content-center">
