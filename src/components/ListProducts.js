@@ -140,11 +140,11 @@ export const ListProducts = () => {
         </Box>
       </Modal>
 
-      <h1 className="text-center my-5">Products</h1>
-      <div className="container mt-5">
-        <div className="d-flex row">
+      <h1 className="text-center my-5 mx-0">Products</h1>
+      <div className="container">
+        <div className="d-flex row mx-0 justify-content-center">
           {products.map((item, id) => (
-            <div className="wrapper col-4 my-3">
+            <div className="wrapper col-10 col-sm-6 col-lg-4 my-3 mx-0">
               <div className="card bg-light">
                 <div className="card-body text-center">
                   <h2>{item.name}</h2>
