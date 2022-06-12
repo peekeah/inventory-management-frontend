@@ -46,6 +46,13 @@ const Sidebar = () => {
               className="list-group-item list-group-item-action"
               onClick={() => navigate("/")}
             >
+              Home
+            </button>
+            <button
+              type="button"
+              className="list-group-item list-group-item-action"
+              onClick={() => navigate("/dashboard")}
+            >
               Dashboard
             </button>
             <button
