@@ -101,7 +101,7 @@ export const UpdateProduct = ({ data, counter, setCounter, handleClose }) => {
               <div className="my-3">
                 <label className="form-label">Quantity</label>
                 <input
-                  type="text"
+                  type="number"
                   className={`form-control ${
                     touched.quantity && errors.quantity && "is-invalid"
                   }`}
