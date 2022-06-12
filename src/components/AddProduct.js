@@ -54,7 +54,7 @@ export const AddProduct = () => {
         className="container d-flex align-items-center justify-content-center"
         style={{ height: "80vh" }}
       >
-        <div className="col-6">
+        <div className="col-10 col-md-8 col-lg-6">
           <h2 className="text-center">Add Product</h2>
           <Formik
             initialValues={initialValues}
